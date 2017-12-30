@@ -18,7 +18,7 @@ import os
 import requests
 
 # add your API key (from wunderground) here
-api_key = "b12acb396d17510a"
+api_key = "xxxxxxxxxxxxxxxxx"
 
 station_ids = ["LAX", ] 
 
