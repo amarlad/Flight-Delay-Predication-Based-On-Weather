@@ -11,7 +11,7 @@ import requests
 import sqlite3
 
 # add your API key (from wunderground) here
-api_key = "b12acb396d17510a"
+api_key = "xxxxxxxxxxxxxxxxxxx"
 station_ids = ["DFW","SFO","IAH","NYC", ] 
 
 # enter the first and last day required here
