@@ -31,7 +31,7 @@ def sql_insert(to_db):
 if __name__ == "__main__":
     create_table()
     
-    for i in range (1, 12):
+    for i in range (1, 13):
         filename = path + csvfiles + str(i) + '.csv'
         with open (filename, 'r') as csvfile:
             # csv.DictReader uses first line in file for column headings by default
