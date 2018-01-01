@@ -42,7 +42,6 @@ if __name__ == "__main__":
     
     for station_id in station_ids:
         filename =  station_id + 'weatherdata.csv' 
-        print("Fetching data for station ID: %s" % station_id)
         try:
             with open(filename, 'w', newline='') as csvfile:  
                 writer = csv.writer(csvfile)
