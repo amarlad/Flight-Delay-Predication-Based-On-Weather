@@ -39,20 +39,20 @@ def sql_insert2(to_db):
 if __name__ == "__main__":
     create_table()
     
-#    sql = 'select * from airportweather'
-#    c.execute(sql)
-#    records = c.fetchall()
-#    cnt = 0
-#    for record in records:
-#        to_db = record
-#        adatetime = datetime.datetime(int(to_db[1]), int(to_db[2]), int(to_db[3]), int(to_db[4]), int(to_db[5]), 0)
-#        to_db = to_db + (adatetime,)
-#        try:
-#            cnt += 1
-#            sql_insert1(to_db)            
-#        except:
-#            print('error:' + str(cnt))
-#    print('completed' + str(cnt))
+    sql = 'select * from airportweather'
+    c.execute(sql)
+    records = c.fetchall()
+    cnt = 0
+    for record in records:
+        to_db = record
+        adatetime = datetime.datetime(int(to_db[1]), int(to_db[2]), int(to_db[3]), int(to_db[4]), int(to_db[5]), 0)
+        to_db = to_db + (adatetime,)
+        try:
+            cnt += 1
+            sql_insert1(to_db)            
+        except:
+            print('error:' + str(cnt))
+    print('completed' + str(cnt))
     
     sql = 'select * from airportdata'
     c.execute(sql)
