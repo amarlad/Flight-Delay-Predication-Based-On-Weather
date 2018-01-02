@@ -9,7 +9,7 @@ import sqlite3
 import datetime
 
 # SQLITE database details
-airportdelay = 'airportdelay'
+airportdelay = 'Weather'
 connection = sqlite3.connect('{}.db'.format(airportdelay))
 c = connection.cursor()
 
@@ -30,7 +30,7 @@ def sql_insert1(to_db):
 # SQL insert      
 def sql_insert2(to_db):
     try:
-        c.execute("INSERT INTO airportdatadatetime VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (to_db)) 
+        c.executemany("INSERT INTO airportdatadatetime VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (to_db)) 
         connection.commit()
     except Exception as e:
         print('s0 insertion',str(e))
@@ -58,6 +58,7 @@ if __name__ == "__main__":
     c.execute(sql)
     records = c.fetchall()
     cnt = 0
+    to_indb = []
     for record in records:
         to_db = record
         dtime = to_db[27]
@@ -77,11 +78,12 @@ if __name__ == "__main__":
         adatetime = datetime.datetime.combine(adate, atime)
         adatetime = adatetime - datetime.timedelta(minutes=int(float(ddelay)))
         to_db = to_db + (adatetime,)
-        try:
-            cnt += 1
-            sql_insert2(to_db)            
-        except:
-            print('error:' + str(cnt))
+        to_indb.append(to_db)
+    try:
+        cnt += 1
+        sql_insert2(to_indb)            
+    except:
+        print('error:' + str(cnt))
     print('completed' + str(cnt))
         
 connection.close()
